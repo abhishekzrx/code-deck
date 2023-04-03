@@ -1,9 +1,8 @@
 import React from 'react'
 
-function PlayGround() {
+export const PlayGround = () => {
   return (
     <div>PlayGround</div>
   )
 }
-
 export default PlayGround

@@ -1,33 +1,30 @@
 import { createContext,useState } from "react";
 export const ModalContext=createContext();
-function ModalProvider({childern}){
-    const initialModalFields={
-        show:false,
-        modaltype:"",
-        identifiers:{
-            folderId:"",
-            cardID  :"",
-        }
-    };
-    const [isOpenModel,setIsOpenModal]=useState({...initialModalFields});
-    const openModal=(value)=>{
-        setIsOpenModal(value);
-    }
-    const closeModal=()=>{
-        setIsOpenModal({...initialModalFields})
-    }
-    const ModalFeatures={
-       isOpenModel:isOpenModel,
-       openModal:openModal,
-       closeModal:closeModal,
-    };
-    return(
-        <ModalContext.Provider value={ModalFeatures}>
-            {childern}
-        </ModalContext.Provider>
-    )
+function ModalProvider({children}){
+         const intialModalFields={
+                  show:false,
+                  modalType:"",
+                  identifiers:{
+                           folderId:"",
+                           cardID:"",
+                  },
+         };
+         const [isOpenModal,setIsOpenModal]=useState({...intialModalFields});
+         const openModal=(value)=>{
+                  setIsOpenModal(value)
+         };
+         const closeModal =()=>{
+                  setIsOpenModal({...intialModalFields})
+         }
+         const ModalFeatures = {
+                  isOpenModal:isOpenModal,
+                  openModal:openModal,
+                  closeModal:closeModal,
+         };
+         return(
+                  <ModalContext.Provider value={ModalFeatures}>
+                       {children}
+                  </ModalContext.Provider>
+         )
 }
 export default ModalProvider;
-// creation phase   const ModalContext=createContext()
-//providing phase
-//consumming phase
