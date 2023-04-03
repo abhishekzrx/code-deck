@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 // npm i react-icons
 import { FcOpenedFolder } from "react-icons/fc";
 import { BiEditAlt } from "react-icons/bi";
 import { IoTrashOutline } from "react-icons/io5";
 import Card from "../Card";
+import {ModalContext} from "../../Context/ModalContext"
+import {PlaygroundContext} from "../../Context/PlaygroundContext"
 export const RightPaneHomeScreen = () => {
+  const {openModal}=useContext(ModalContext)
+  const {folders,deleteFolder,deleteCard}=useContext(PlaygroundContext)
   return(
     <div className='border-2 border-black h-screen p-8'>
        <div className='flex justify-between items-center'>
          <h2>
           My<span className='font-semibold text-2xl'>Playground</span>
          </h2>
-         <h4 >
+         <h4 onClick={()=>{
+          openModal({
+            show:true,
+            modalType:1
+            
+          })
+         }}>
           <span className='font-semibold text-2xl'>+</span>New Folder
          </h4>
        </div>
