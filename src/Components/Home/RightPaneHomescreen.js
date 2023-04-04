@@ -13,70 +13,64 @@ export const RightPaneHomeScreen = () => {
     <div className='border-2 border-black h-screen p-8'>
        <div className='flex justify-between items-center'>
          <h2>
-          My<span className='font-semibold text-2xl'>Playground</span>
+          My <span className='font-semibold text-2xl'>Playground</span>
          </h2>
-         <h4 onClick={()=>{
+         <h4 className='font-semibold text-2xl' onClick={()=>{
           openModal({
             show:true,
-            modalType:1
-            
+            modalType:1,
+            identifiers:{
+                           folderId:"",
+                           cardID:"",
+                  },
           })
          }}>
           <span className='font-semibold text-2xl'>+</span>New Folder
          </h4>
        </div>
-
        <hr className='mg-12 mt-4 bg-black'/>
-
-       <div className='flex justify-between items-center my-8'>
-         <div className='flex gap-4 items-center'>
-           <FcOpenedFolder size={"2rem"}/>
-           <h3 className='font-semibold'>DSA</h3>
-         </div>
-         <div className='flex gap-4 items-center'>
-          <BiEditAlt size={"1.5rem"}/>
-          <IoTrashOutline size={"1.5rem"}/>
-          <h4 className='font-semibold'>
-            <span>+</span>New Playground
-          </h4>
-         </div>
-       </div>
-
-       <hr className='mg-12 mt-4 bg-black'/>
-       <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-         <Card>
-            <div className='flex items-center justify-between'>
-              <div className='flex gap-4'>
-                <img src="./logo-small.png"/>
-                <div>
-                  <h4>stack Implimentation</h4>
-                  <h4>Language.cpp</h4>
-                </div>
-              </div>
-              <div className='flex gap-4 items-center'>
-                <BiEditAlt size={"1.5rem"}/>
-                <IoTrashOutline size={"1.5rem"}/>
-              </div>
+       {Object.entries(folders).map(([folderId, folder]) => (
+        <div className="flex flex-col my-8">
+          <div className="flex justify-between items-center">
+            <div className="flex items-center gap-2">
+              <div className="flex items-center"></div>
+              <FcOpenedFolder size={"2em"} />
+              <h3 className="font-semibold"> {folder.title} </h3>
             </div>
-         </Card>
-         <Card>
-            <div className='flex items-center justify-between'>
-              <div className='flex gap-4'>
-                <img src="./logo-small.png"/>
-                <div>
-                  <h4>stack Implimentation</h4>
-                  <h4>Language.cpp</h4>
-                </div>
+            <div className="flex gap-4 items-center">
+              <BiEditAlt
+                size={"1.5em"}
+                onClick={() => {
+                  openModal({
+                    show: true,
+                    modalType: 4,
+                    identifiers: {
+                      folderId: folderId, //folderid pass kar rahe hai
+                      cardID: "",
+                    },
+                  });
+                }}
+              />
+              <IoTrashOutline
+                size={"1em"}
+                onClick={()=>deleteFolder(folderId)}
+              />
+              <h4 onClick={()=>{
+                openModal({
+                  show:true,
+                  modalType:2,
+                  identifiers:{
+                    folderId:folderId,
+                    cardID:"",
+                  }
+                })
+              }}> + New Playground </h4>
               </div>
-              <div className='flex gap-4 items-center'>
-                <BiEditAlt size={"1.5rem"}/>
-                <IoTrashOutline size={"1.5rem"}/>
-              </div>
-            </div>
-         </Card>
-       </div> 
+          </div>
+        </div>
+      ))}
     </div>
-  )
+  );
 }
 
 export default RightPaneHomeScreen;
