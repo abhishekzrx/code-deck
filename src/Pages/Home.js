@@ -1,9 +1,10 @@
 import React from 'react'
 import { LeftPaneHomeScreen } from '../Components/Home/LeftPaneHomeScreen';
-import { RightPaneHomeScreen } from '../Components/Home/RightPaneHomeScreen';
+
 import { useContext } from 'react';
 import { ModalContext } from '../Context/ModalContext';
 import Modal from '../Components/Modal';
+import RightPaneHomeScreen from '../Components/Home/RightPaneHomeScreen';
 export const Home = () => {
   const {isOpenModal}=useContext(ModalContext)
   return (
@@ -12,7 +13,7 @@ export const Home = () => {
             <LeftPaneHomeScreen/>      
          </div>
          <div className=''>
-             <RightPaneHomeScreen/>
+            <RightPaneHomeScreen/>
          </div>
          {isOpenModal.show && <Modal/>}
     </div>
