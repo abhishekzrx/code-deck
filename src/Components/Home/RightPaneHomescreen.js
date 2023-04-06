@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 
 function RightPaneHomeScreen() {
   // this is the syntax for using navigate;
-
+  const navigate = useNavigate();
   const { openModal } = useContext(ModalContext);
   const { folders, deleteFolder, deleteCard } = useContext(PlaygroundContext);
   return (
@@ -19,7 +19,7 @@ function RightPaneHomeScreen() {
         <h2>
           My <span className="font-semibold text-2xl">Playground</span>
         </h2>
-        <h4 className="cursor-pointer"
+        <h4
           onClick={() =>
             openModal({
               show: true,
@@ -31,7 +31,7 @@ function RightPaneHomeScreen() {
             })
           }
         >
-          <span className="font-semibold text-2xl cursor-pointer">+</span> New Folder
+          <span className="font-semibold text-2xl">+</span> New Folder
         </h4>
       </div>
       <hr className="mb-12 mt-4 bg-black" />
@@ -83,7 +83,10 @@ function RightPaneHomeScreen() {
               ([playgroundId, playground]) => (
                 <Card key={playgroundId}>
                   <div className="flex items-center justify-between"
-               
+                  onClick={(e)=>{
+                    e.stopPropagation();
+                    navigate(`/code/${folderId}/${playgroundId}`);
+                  }}
                   >
                     <div className="flex gap-4">
                       <img src="/logo-small.png" alt="small-logo" />
