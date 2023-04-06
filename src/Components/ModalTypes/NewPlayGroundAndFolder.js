@@ -31,7 +31,7 @@ function NewPlayGroundAndFolder() {
           type="text"
           value={folderName}
           onChange={(e) => setFolderName(e.target.value)}
-          className="border-[.5px] text-sm border-gray-50 rounded-lg shadow-sm p-2 w-full"
+          className="border-[.5px] text-sm border-gray-50 rounded-lg shadow-sm p-2 w-full border-solid"
         />
         <span>Card Name</span>
         <input

@@ -97,7 +97,7 @@ function RightPaneHomeScreen() {
                     </div>
                     <div className="flex gap-4 items-center">
                       <BiEditAlt
-                        size={"1.5em"}
+                        size={"1em"}
                         onClick={() =>
                           openModal({
                             show: true,

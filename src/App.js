@@ -4,7 +4,8 @@ import routes from './Pages/Routes';
 import PlaygroundProvider from './Context/PlaygroundContext';
 import ModalProvider from './Context/ModalContext';
 const Loader =()=>{
-  <div>Loading....</div>
+  <div>
+  Loading....</div>
 }
 export const App = () => {
   return (

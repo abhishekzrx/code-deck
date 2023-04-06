@@ -1,22 +1,21 @@
-import React from 'react'
-import { LeftPaneHomeScreen } from '../Components/Home/LeftPaneHomeScreen';
-
-import { useContext } from 'react';
-import { ModalContext } from '../Context/ModalContext';
-import Modal from '../Components/Modal';
-import RightPaneHomeScreen from '../Components/Home/RightPaneHomeScreen';
-export const Home = () => {
-  const {isOpenModal}=useContext(ModalContext)
+import React, { useContext } from "react";
+import LeftPaneHomeScreen from "../Components/Home/LeftPaneHomeScreen";
+import RightPaneHomeScreen from "../Components/Home/RightPaneHomeScreen";
+import Modal from "../Components/Modal";
+import { ModalContext } from "../Context/ModalContext";
+function Home() {
+  const { isOpenModal } = useContext(ModalContext);
   return (
-    <div className="grid grid-cols-2">
-         <div className=''>
-            <LeftPaneHomeScreen/>      
-         </div>
-         <div className=''>
-            <RightPaneHomeScreen/>
-         </div>
-         {isOpenModal.show && <Modal/>}
+    <div className="md:grid grid-cols-2 flex flex-col">
+      <div>
+        <LeftPaneHomeScreen />
+      </div>
+      <div className="border-[30px] border-black">
+        <RightPaneHomeScreen />
+      </div>
+      {isOpenModal.show && <Modal />}
     </div>
-  )
+  );
 }
+
 export default Home;

@@ -145,37 +145,37 @@ function PlayGround() {
 
   return (
     <div>
-      <Navbar isFullScreen={isFullScreen} />
-      <div className="flex flex-row h-full">
-        <div className={`${isFullScreen ? "w-full" : "w-3/4"}`}>
-          <EditContainer
-            title={title}
-            currentLanguage={currentLanguage}
-            setCurrentLanguage={setCurrentLanguage}
-            currentCode={currentCode}
-            setCurrentCode={setCurrentCode}
-            folderID={folderID}
-            playgroundID={playgroundID}
-            savecode={savecode}
-            runCode={runCode}
-            isFullScreen={isFullScreen}
-            setIsFullScreen={setIsFullScreen}
+    <Navbar isFullScreen={isFullScreen} />
+    <div className="flex flex-row h-full">
+      <div className={`${isFullScreen ? "w-full" : "w-3/4"}`}>
+        <EditContainer
+          title={title}
+          currentLanguage={currentLanguage}
+          setCurrentLanguage={setCurrentLanguage}
+          currentCode={currentCode}
+          setCurrentCode={setCurrentCode}
+          folderID={folderID}
+          playgroundID={playgroundID}
+          savecode={savecode}
+          runCode={runCode}
+          isFullScreen={isFullScreen}
+          setIsFullScreen={setIsFullScreen}
+          getFile={getFile}
+        />
+      </div>
+      {!isFullScreen && (
+        <div className="w-1/4 ">
+          <InputConsole
+            currentInput={currentInput}
+            setCurrentInput={setCurrentInput}
             getFile={getFile}
           />
+          <OutputConsole currentOutput={currentOutput} />
         </div>
-        {!isFullScreen && (
-          <div className="w-1/4">
-            <InputConsole
-              currentInput={currentInput}
-              setCurrentInput={setCurrentInput}
-              getFile={getFile}
-            />
-            <OutputConsole currentOutput={currentOutput} />
-          </div>
-        )}
-        {isOpenModal.show && <Modal />}
-      </div>
+      )}
+      {isOpenModal.show && <Modal />}
     </div>
+  </div>
   );
 }
 
